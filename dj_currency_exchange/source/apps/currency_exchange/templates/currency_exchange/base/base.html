@@ -1,0 +1,46 @@
+{% load i18n static %}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <title>
+        {% trans 'Currency Exchange' %}{% block title %}{% endblock %}
+    </title>
+
+    {% block root_static_header %}
+        <link rel="stylesheet" href="{% static 'currency_exchange/external/bootstrap-3.3.7/css/bootstrap.min.css' %}">
+        <link rel="stylesheet" href="{% static 'currency_exchange/custom/css/base.css' %}">
+{#        <link rel="stylesheet" href="{% static 'currency_exchange/external/bootstrap-3.3.7/css/bootstrap-theme.min.css' %}">#}
+    {% endblock %}
+
+    {% block custom_static_header %}{% endblock %}
+</head>
+<body>
+{% block header %}
+    {% include 'currency_exchange/base/navbar.html' %}
+    {% include 'currency_exchange/base/header.html' %}
+{% endblock %}
+
+{% block content_root %}
+    <div class="container container-root" role="main">
+        {% block content %}{% endblock %}
+    </div>
+{% endblock %}
+
+{% block footer %}
+    {% include 'currency_exchange/base/footer.html' with custom_value='my value' %}
+{% endblock %}
+
+{% block root_static_footer %}
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+    <script src="{% static 'currency_exchange/external/bootstrap-3.3.7/js/bootstrap.min.js' %}"></script>
+{% endblock %}
+
+{% block curstom_static_footer %}{% endblock %}
+
+</body>
+</html>

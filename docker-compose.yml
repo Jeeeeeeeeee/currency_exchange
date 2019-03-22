@@ -1,0 +1,57 @@
+version: '3.4'
+
+volumes:
+    edu-postgre-data:
+      external: true
+    edu-mongo-data:
+      external: true
+
+services:
+  edu_postgres:
+    container_name: edu-postgres-service
+    image: postgres:10.5
+    environment:
+      - POSTGRES_DB=edu_db
+      - POSTGRES_USER=edu_user
+      - POSTGRES_PASSWORD=edu_pass
+    volumes:
+      - edu-postgre-data:/var/lib/postgresql/data
+    ports:
+      - "5432:5432"
+
+  edu_mongodb:
+      container_name: edu-mongodb-service
+      image: mongo:3.4
+      environment:
+        - MONGO_INITDB_ROOT_USERNAME=edu_user
+        - MONGO_INITDB_ROOT_PASSWORD=edu_password
+      volumes:
+        - edu-mongo-data:/data/db
+      ports:
+        - "27017:27017"
+
+  edu_memcached:
+    container_name: edu-memcached-service
+    image: memcached:1.4
+    ports:
+      - "11211:11211"
+
+  edu_rabbitmq:
+    container_name: edu-rabbitmq-service
+    image: rabbitmq:3.7.4-management
+    environment:
+      - RABBITMQ_DEFAULT_USER=edu_user
+      - RABBITMQ_DEFAULT_PASS=edu_password
+    ports:
+      - "4369:4369"
+      - "5671:5671"
+      - "5672:5672"
+      - "15671:15671"
+      - "15672:15672"
+      - "25672:25672"
+
+  edu_redis:
+    container_name: edu-redis-service
+    image: redis:5
+    ports:
+      - "6379:6379"

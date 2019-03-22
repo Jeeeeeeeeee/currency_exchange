@@ -1,0 +1,7 @@
+pymemcache==2.1.1
+requests==2.21.0
+redis==3.2.0
+celery==4.2.1
+pymongo==3.7.2
+mongoengine==0.17.0
+psycopg2==2.7.7

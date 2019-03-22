@@ -1,0 +1,22 @@
+{% extends 'currency_exchange/base/base.html' %}
+
+{% load i18n %}
+
+{% block title %}
+    {% trans 'Probider List' %}
+{% endblock %}
+
+{% block content %}
+    <div class="row">
+        <div class="col-md-8">
+            <h1>{% trans 'Providers' %}</h1>
+
+            {% for prov in providers %}
+                <p>
+                    {{ prov.code }} - {{ prov.name }}
+                </p>
+            {% endfor %}
+            
+        </div>
+    </div>
+{% endblock %}
